@@ -1,8 +1,5 @@
-import { Suspense, lazy } from "react";
-
-const HeavyClientComponent = lazy(
-  () => import("../components/heavy-client-component")
-);
+import { Suspense } from "react";
+import { HeavyClientLoader } from "../components/heavy-client-loader";
 
 export default async function HomePage() {
   return (
@@ -11,8 +8,8 @@ export default async function HomePage() {
       <h1 className="text-4xl font-bold tracking-tight">
         Waku SSR Exclude Client Component
       </h1>
-      <Suspense fallback="Loading...">
-        <HeavyClientComponent />
+      <Suspense fallback={<div>Loading...</div>}>
+        <HeavyClientLoader />
       </Suspense>
     </div>
   );
